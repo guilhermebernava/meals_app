@@ -89,5 +89,5 @@ flutter:
           weight: 700
         - asset: assets/fonts/RobotoCondensed-Light.ttf
           weight: 300
-        - asset: assets/fonts/RobotoCondensed-Black.ttf
+        - asset: assets/fonts/RobotoCondensed-Italic.ttf
           style: italic
