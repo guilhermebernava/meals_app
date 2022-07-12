@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/pages/category/category.dart';
 import 'package:meals_app/pages/category/category_props.dart';
 import 'package:meals_app/pages/filter.dart';
 import 'package:meals_app/pages/meal_detail.dart';
 import 'package:meals_app/pages/tabs_home/tabs_home.dart';
+import 'package:meals_app/states/category_state.dart';
+import 'package:meals_app/states/meal_state.dart';
 
 import 'themes/app_colors.dart';
 
@@ -35,14 +38,27 @@ class App extends StatelessWidget {
         Category.route: (context) {
           var props =
               ModalRoute.of(context)?.settings.arguments as CategoryProps;
-          return Category(
-            recipeTitle: props.title,
-            id: props.id,
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) => CategoryState(),
+              ),
+              BlocProvider(
+                create: (_) => MealState(),
+              )
+            ],
+            child: Category(
+              recipeTitle: props.title,
+              id: props.id,
+            ),
           );
         },
         MealDetail.route: (context) {
           var model = ModalRoute.of(context)?.settings.arguments as MealModel;
-          return MealDetail(model: model);
+          return BlocProvider(
+            create: (_) => MealState(),
+            child: MealDetail(model: model),
+          );
         },
         Filter.route: (context) => const Filter(),
       },

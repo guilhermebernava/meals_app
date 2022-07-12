@@ -4,7 +4,7 @@ import 'package:meals_app/widgets/category_item/category_item.dart';
 import 'package:meals_app/widgets/category_widget.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  Home({Key? key}) : super(key: key);
   final dummyCategories = DummyData.dummyCategories;
 
   @override

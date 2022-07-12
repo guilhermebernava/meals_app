@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meals_app/models/category.dart';
+import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/states/category_state.dart';
+import 'package:meals_app/states/meal_state.dart';
 import 'package:meals_app/widgets/meal_item/meal_item.dart';
-import '../../data/dummy_data.dart';
 
 class Category extends StatelessWidget {
   static const route = "/recipe";
@@ -10,27 +14,40 @@ class Category extends StatelessWidget {
   const Category({Key? key, required this.recipeTitle, required this.id})
       : super(key: key);
 
-  final mealsList = DummyData.dummyData;
-  final categories = DummyData.dummyCategories;
-
   @override
   Widget build(BuildContext context) {
-    final mealsByCategories =
-        mealsList.where((element) => element.categories.contains(id));
     final size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(recipeTitle),
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          return MealItem(
-            context,
-            model: mealsByCategories.elementAt(index),
-            size: size,
-          );
+      body: BlocBuilder<CategoryState, List<CategoryModel>>(
+        builder: (context, categories) => ListView.builder(
+          itemBuilder: (context, index) {
+            return BlocBuilder<MealState, List<MealModel>>(
+              builder: (ctx, meals) => MealItem(
+                context,
+                model:
+                    context.read<MealState>().byCategory(id).elementAt(index),
+                size: size,
+              ),
+            );
+          },
+          itemCount: context.read<MealState>().lenght(id),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        elevation: 3,
+        tooltip: "Delete this category",
+        child: const Icon(
+          Icons.delete,
+          size: 30,
+        ),
+        onPressed: () {
+          context.read<CategoryState>().remove(id);
+          Navigator.of(context).pushReplacementNamed("/");
         },
-        itemCount: mealsByCategories.length,
       ),
     );
   }

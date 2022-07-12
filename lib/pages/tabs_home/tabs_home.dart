@@ -19,7 +19,10 @@ class _TabsHomeState extends State<TabsHome> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      drawer: MainDrawer(size: size),
+      drawer: MainDrawer(
+        size: size,
+        tabsHomeController: controller,
+      ),
       appBar: AppBar(
         title: AnimatedCard(
           curve: Curves.decelerate,

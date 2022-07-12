@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/pages/tabs_home/children/drawer/main_drawer_controller.dart';
+import 'package:meals_app/pages/tabs_home/tabs_home_controller.dart';
 import 'package:meals_app/themes/app_colors.dart';
 import 'package:meals_app/themes/app_styles.dart';
 import 'package:meals_app/widgets/button_with_icon.dart';
 
 class MainDrawer extends StatelessWidget {
   final Size size;
-  MainDrawer({Key? key, required this.size}) : super(key: key);
+  final TabsHomeController tabsHomeController;
+  MainDrawer({
+    Key? key,
+    required this.size,
+    required this.tabsHomeController,
+  }) : super(key: key);
 
   final controller = MainDrawerController();
 

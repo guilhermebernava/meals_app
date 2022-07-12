@@ -3,7 +3,7 @@ import 'package:meals_app/pages/filter.dart';
 
 class MainDrawerController {
   void onTapMeals(BuildContext context) {
-    Navigator.pop(context);
+    Navigator.pushReplacementNamed(context, "/");
   }
 
   void onTapFilters(BuildContext context) {

@@ -3,7 +3,7 @@ import 'package:meals_app/pages/home.dart';
 
 class TabsHomeController {
   final List<Map<String, dynamic>> pages = [
-    {"page": const Home(), "title": "Categories"},
+    {"page": Home(), "title": "Categories"},
     {"page": const Favorites(), "title": "Favorites"},
   ];
   int pageIndex = 0;

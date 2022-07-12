@@ -4,8 +4,8 @@ import '../models/category.dart';
 import '../models/meal.dart';
 
 class DummyData {
-  static const dummyData = [
-    MealModel(
+  static final dummyMeals = [
+    const MealModel(
       id: 'm1',
       categories: [
         'c1',
@@ -39,7 +39,7 @@ class DummyData {
       isVegetarian: true,
       isLactoseFree: true,
     ),
-    MealModel(
+    const MealModel(
       id: 'm2',
       categories: [
         'c2',
@@ -67,7 +67,7 @@ class DummyData {
       isVegetarian: false,
       isLactoseFree: false,
     ),
-    MealModel(
+    const MealModel(
       id: 'm3',
       categories: [
         'c2',
@@ -99,7 +99,7 @@ class DummyData {
       isVegetarian: false,
       isLactoseFree: true,
     ),
-    MealModel(
+    const MealModel(
       id: 'm4',
       categories: [
         'c4',
@@ -134,7 +134,7 @@ class DummyData {
       isVegetarian: false,
       isLactoseFree: false,
     ),
-    MealModel(
+    const MealModel(
       id: 'm5',
       categories: [
         'c2'
@@ -170,7 +170,7 @@ class DummyData {
       isVegetarian: true,
       isLactoseFree: true,
     ),
-    MealModel(
+    const MealModel(
       id: 'm6',
       categories: [
         'c6',
@@ -206,7 +206,7 @@ class DummyData {
       isVegetarian: true,
       isLactoseFree: false,
     ),
-    MealModel(
+    const MealModel(
       id: 'm7',
       categories: [
         'c7',
@@ -237,7 +237,7 @@ class DummyData {
       isVegetarian: true,
       isLactoseFree: false,
     ),
-    MealModel(
+    const MealModel(
       id: 'm8',
       categories: [
         'c8',
@@ -270,7 +270,7 @@ class DummyData {
       isVegetarian: false,
       isLactoseFree: true,
     ),
-    MealModel(
+    const MealModel(
       id: 'm9',
       categories: [
         'c9',
@@ -319,7 +319,7 @@ class DummyData {
       isVegetarian: true,
       isLactoseFree: false,
     ),
-    MealModel(
+    const MealModel(
       id: 'm10',
       categories: [
         'c2',
@@ -355,53 +355,53 @@ class DummyData {
     ),
   ];
 
-  static const dummyCategories = [
-    CategoryModel(
+  static final dummyCategories = [
+    const CategoryModel(
       id: 'c1',
       title: 'Italian',
       color: Colors.purple,
     ),
-    CategoryModel(
+    const CategoryModel(
       id: 'c2',
       title: 'Quick & Easy',
       color: Colors.red,
     ),
-    CategoryModel(
+    const CategoryModel(
       id: 'c3',
       title: 'Hamburgers',
       color: Colors.orange,
     ),
-    CategoryModel(
+    const CategoryModel(
       id: 'c4',
       title: 'German',
       color: Colors.amber,
     ),
-    CategoryModel(
+    const CategoryModel(
       id: 'c5',
       title: 'Light & Lovely',
       color: Colors.blue,
     ),
-    CategoryModel(
+    const CategoryModel(
       id: 'c6',
       title: 'Exotic',
       color: Colors.green,
     ),
-    CategoryModel(
+    const CategoryModel(
       id: 'c7',
       title: 'Breakfast',
       color: Colors.lightBlue,
     ),
-    CategoryModel(
+    const CategoryModel(
       id: 'c8',
       title: 'Asian',
       color: Colors.lightGreen,
     ),
-    CategoryModel(
+    const CategoryModel(
       id: 'c9',
       title: 'French',
       color: Colors.pink,
     ),
-    CategoryModel(
+    const CategoryModel(
       id: 'c10',
       title: 'Summer',
       color: Colors.teal,
