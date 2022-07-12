@@ -1,5 +1,7 @@
+import 'package:animated_card/animated_card.dart';
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/themes/app_colors.dart';
 import 'package:meals_app/themes/app_styles.dart';
 import 'package:meals_app/widgets/meal_detail_ingredient_item.dart';
 import 'package:meals_app/widgets/rounded_image.dart';
@@ -32,10 +34,15 @@ class MealDetail extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: RoundedImage(
-                imageUrl: model.imageUrl,
-                size: size,
-                height: 0.35,
+              child: AnimatedCard(
+                curve: Curves.easeInOutCubicEmphasized,
+                duration: const Duration(milliseconds: 400),
+                direction: AnimatedCardDirection.top,
+                child: RoundedImage(
+                  imageUrl: model.imageUrl,
+                  size: size,
+                  height: 0.35,
+                ),
               ),
             ),
             Padding(
@@ -43,24 +50,41 @@ class MealDetail extends StatelessWidget {
               child: Column(
                 children: [
                   mealDetailtitle("Ingredients"),
-                  ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) => MealDeatilIngredientItem(
-                        text: model.ingredients[index]),
-                    itemCount: model.ingredients.length,
+                  AnimatedCard(
+                    curve: Curves.decelerate,
+                    duration: const Duration(milliseconds: 300),
+                    direction: AnimatedCardDirection.top,
+                    child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) => MealDeatilIngredientItem(
+                          text: model.ingredients[index]),
+                      itemCount: model.ingredients.length,
+                    ),
                   ),
-                  const Divider(
-                    thickness: 2,
-                    color: Colors.pinkAccent,
+                  AnimatedCard(
+                    curve: Curves.decelerate,
+                    duration: const Duration(milliseconds: 300),
+                    direction: AnimatedCardDirection.right,
+                    child: const Divider(
+                      thickness: 2,
+                      color: AppColors.secundaryAccent,
+                      indent: 30,
+                      endIndent: 30,
+                    ),
                   ),
                   mealDetailtitle("Steps"),
-                  ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) =>
-                        MealDeatilIngredientItem(text: model.steps[index]),
-                    itemCount: model.steps.length,
+                  AnimatedCard(
+                    curve: Curves.bounceIn,
+                    duration: const Duration(seconds: 1),
+                    direction: AnimatedCardDirection.bottom,
+                    child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) =>
+                          MealDeatilIngredientItem(text: model.steps[index]),
+                      itemCount: model.steps.length,
+                    ),
                   ),
                 ],
               ),

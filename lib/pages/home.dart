@@ -12,19 +12,32 @@ class Home extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: CategoryWidget(
-          size: mediaQuery.size,
-          categories: dummyCategories
-              .map(
-                (category) => CategoryItem(
-                  key: ValueKey(category.id),
-                  title: category.title,
-                  color: category.color,
-                  id: category.id,
+        padding:
+            const EdgeInsets.only(top: 10.0, left: 10, right: 10, bottom: 0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: mediaQuery.size.height,
+                child: CategoryWidget(
+                  size: mediaQuery.size,
+                  categories: dummyCategories
+                      .map(
+                        (category) => CategoryItem(
+                          key: ValueKey(category.id),
+                          title: category.title,
+                          color: category.color,
+                          id: category.id,
+                        ),
+                      )
+                      .toList(),
                 ),
+              ),
+              SizedBox(
+                height: mediaQuery.size.height * 0.05,
               )
-              .toList(),
+            ],
+          ),
         ),
       ),
     );

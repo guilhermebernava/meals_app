@@ -6,6 +6,7 @@ class CategoryWidget extends GridView {
       : super(
           key: key,
           children: categories,
+          physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: size.width * 0.45,
             childAspectRatio: 3 / 2,

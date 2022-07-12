@@ -1,3 +1,4 @@
+import 'package:animated_card/animated_card.dart';
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/themes/app_styles.dart';
@@ -13,67 +14,72 @@ class MealItem extends InkWell {
   }) : super(
           key: key,
           onTap: () => MealItemController().redirect(context, model),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            elevation: 4,
-            margin: const EdgeInsets.all(15),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Stack(
-                  children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15),
-                      ),
-                      child: Image.network(
-                        model.imageUrl,
-                        height: size.height * 0.25,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 20,
-                      right: 10,
-                      child: SizedBox(
-                        width: size.width * 0.85,
-                        child: Text(
-                          model.title,
-                          style: AppStyles.mealItemTitle,
-                          softWrap: true,
-                          overflow: TextOverflow.fade,
+          child: AnimatedCard(
+            curve: Curves.easeOut,
+            duration: const Duration(milliseconds: 500),
+            direction: AnimatedCardDirection.left,
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              elevation: 4,
+              margin: const EdgeInsets.all(15),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(15),
+                        ),
+                        child: Image.network(
+                          model.imageUrl,
+                          height: size.height * 0.25,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      IconWithText(
-                        text: "${model.duration} min",
-                        icon: Icons.alarm,
-                      ),
-                      IconWithText(
-                        text: model.complexity.name,
-                        icon: Icons.work,
-                      ),
-                      IconWithText(
-                        text: model.affordability.name,
-                        icon: Icons.attach_money,
+                      Positioned(
+                        bottom: 20,
+                        right: 10,
+                        child: SizedBox(
+                          width: size.width * 0.85,
+                          child: Text(
+                            model.title,
+                            style: AppStyles.mealItemTitle,
+                            softWrap: true,
+                            overflow: TextOverflow.fade,
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                )
-              ],
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        IconWithText(
+                          text: "${model.duration} min",
+                          icon: Icons.alarm,
+                        ),
+                        IconWithText(
+                          text: model.complexity.name,
+                          icon: Icons.work,
+                        ),
+                        IconWithText(
+                          text: model.affordability.name,
+                          icon: Icons.attach_money,
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         );

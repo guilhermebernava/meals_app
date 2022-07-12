@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/themes/app_colors.dart';
 import '../themes/app_styles.dart';
 
 class MealDeatilIngredientItem extends Padding {
@@ -10,6 +11,7 @@ class MealDeatilIngredientItem extends Padding {
             children: [
               const Icon(
                 Icons.circle,
+                color: AppColors.backgroundLight,
                 size: 12,
               ),
               const SizedBox(width: 20),
