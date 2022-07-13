@@ -4,7 +4,12 @@ class CategoryModel {
   final String id;
   final String title;
   final Color color;
+  bool isLiked;
 
-  const CategoryModel(
-      {required this.id, required this.title, required this.color});
+  CategoryModel({
+    required this.id,
+    required this.title,
+    required this.color,
+    this.isLiked = false,
+  });
 }

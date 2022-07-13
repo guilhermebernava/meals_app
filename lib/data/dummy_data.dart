@@ -356,55 +356,59 @@ class DummyData {
   ];
 
   static final dummyCategories = [
-    const CategoryModel(
+    CategoryModel(
       id: 'c1',
       title: 'Italian',
       color: Colors.purple,
+      isLiked: true,
     ),
-    const CategoryModel(
+    CategoryModel(
       id: 'c2',
       title: 'Quick & Easy',
       color: Colors.red,
     ),
-    const CategoryModel(
+    CategoryModel(
       id: 'c3',
       title: 'Hamburgers',
       color: Colors.orange,
+      isLiked: true,
     ),
-    const CategoryModel(
+    CategoryModel(
       id: 'c4',
       title: 'German',
       color: Colors.amber,
+      isLiked: true,
     ),
-    const CategoryModel(
+    CategoryModel(
       id: 'c5',
       title: 'Light & Lovely',
       color: Colors.blue,
     ),
-    const CategoryModel(
+    CategoryModel(
       id: 'c6',
       title: 'Exotic',
       color: Colors.green,
     ),
-    const CategoryModel(
+    CategoryModel(
       id: 'c7',
       title: 'Breakfast',
       color: Colors.lightBlue,
     ),
-    const CategoryModel(
+    CategoryModel(
       id: 'c8',
       title: 'Asian',
       color: Colors.lightGreen,
     ),
-    const CategoryModel(
+    CategoryModel(
       id: 'c9',
       title: 'French',
       color: Colors.pink,
     ),
-    const CategoryModel(
+    CategoryModel(
       id: 'c10',
       title: 'Summer',
       color: Colors.teal,
+      isLiked: true,
     ),
   ];
 }

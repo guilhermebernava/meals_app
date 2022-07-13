@@ -38,4 +38,8 @@ class AppStyles {
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
+  static const selectTitle = TextStyle(
+    fontSize: 26,
+    color: Colors.white,
+  );
 }

@@ -2,6 +2,7 @@ import 'package:animated_card/animated_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/models/meal_state_model.dart';
 import 'package:meals_app/states/meal_state.dart';
 import 'package:meals_app/themes/app_colors.dart';
 import 'package:meals_app/themes/app_styles.dart';
@@ -31,7 +32,7 @@ class MealDetail extends StatelessWidget {
       appBar: AppBar(
         title: Text(model.title),
       ),
-      body: BlocBuilder<MealState, List<MealModel>>(
+      body: BlocBuilder<MealState, MealStateModel>(
         builder: (context, categories) => SingleChildScrollView(
           child: Column(
             children: [

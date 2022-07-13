@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meals_app/models/category.dart';
-import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/models/meal_state_model.dart';
 import 'package:meals_app/states/category_state.dart';
 import 'package:meals_app/states/meal_state.dart';
 import 'package:meals_app/widgets/meal_item/meal_item.dart';
@@ -25,13 +25,18 @@ class Category extends StatelessWidget {
       body: BlocBuilder<CategoryState, List<CategoryModel>>(
         builder: (context, categories) => ListView.builder(
           itemBuilder: (context, index) {
-            return BlocBuilder<MealState, List<MealModel>>(
-              builder: (ctx, meals) => MealItem(
-                context,
-                model:
-                    context.read<MealState>().byCategory(id).elementAt(index),
-                size: size,
-              ),
+            return BlocBuilder<MealState, MealStateModel>(
+              builder: (ctx, meals) =>
+                  context.read<MealState>().byCategory(id).isEmpty
+                      ? Container()
+                      : MealItem(
+                          context,
+                          model: context
+                              .read<MealState>()
+                              .byCategory(id)
+                              .elementAt(index),
+                          size: size,
+                        ),
             );
           },
           itemCount: context.read<MealState>().lenght(id),
