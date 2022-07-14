@@ -61,24 +61,88 @@ class MealState extends Cubit<MealStateModel> {
         state.isLactoseFree ||
         state.isVegan ||
         state.isVegetarian) {
-      return state.meals
-          .where(
-            (element) =>
-                element.categories.contains(categoryId) &&
-                element.isGlutenFree == state.isGlutenFree &&
-                element.isLactoseFree == state.isLactoseFree &&
-                element.isVegan == state.isVegan &&
-                element.isVegetarian == state.isVegetarian,
-          )
+      var finalList = <MealModel>[];
+
+      if (state.isGlutenFree) {
+        finalList.addAll(state.meals.where((element) =>
+            element.categories.contains(categoryId) &&
+            element.isGlutenFree == state.isGlutenFree));
+      }
+
+      if (state.isLactoseFree) {
+        finalList.addAll(state.meals.where((element) =>
+            element.categories.contains(categoryId) &&
+            element.isGlutenFree == state.isLactoseFree));
+      }
+
+      if (state.isVegan) {
+        finalList.addAll(state.meals.where((element) =>
+            element.categories.contains(categoryId) &&
+            element.isGlutenFree == state.isVegan));
+      }
+
+      if (state.isVegetarian) {
+        finalList.addAll(state.meals.where((element) =>
+            element.categories.contains(categoryId) &&
+            element.isGlutenFree == state.isVegetarian));
+      }
+
+      var categoryList = finalList
+          .where((element) => element.categories.contains(categoryId))
           .toList();
+
+      return categoryList;
     }
     return [];
   }
 
   int lenght(String categoryId) {
-    return state.meals
-        .where((element) => element.categories.contains(categoryId))
-        .toList()
-        .length;
+    if (!state.isGlutenFree &&
+        !state.isLactoseFree &&
+        !state.isVegan &&
+        !state.isVegetarian) {
+      return state.meals
+          .where((element) => element.categories.contains(categoryId))
+          .toList()
+          .length;
+    }
+
+    if (state.isGlutenFree ||
+        state.isLactoseFree ||
+        state.isVegan ||
+        state.isVegetarian) {
+      var finalList = <MealModel>[];
+
+      if (state.isGlutenFree) {
+        finalList.addAll(state.meals.where((element) =>
+            element.categories.contains(categoryId) &&
+            element.isGlutenFree == state.isGlutenFree));
+      }
+
+      if (state.isLactoseFree) {
+        finalList.addAll(state.meals.where((element) =>
+            element.categories.contains(categoryId) &&
+            element.isGlutenFree == state.isLactoseFree));
+      }
+
+      if (state.isVegan) {
+        finalList.addAll(state.meals.where((element) =>
+            element.categories.contains(categoryId) &&
+            element.isGlutenFree == state.isVegan));
+      }
+
+      if (state.isVegetarian) {
+        finalList.addAll(state.meals.where((element) =>
+            element.categories.contains(categoryId) &&
+            element.isGlutenFree == state.isVegetarian));
+      }
+
+      var categoryList = finalList
+          .where((element) => element.categories.contains(categoryId))
+          .toList();
+
+      return categoryList.length;
+    }
+    return 0;
   }
 }

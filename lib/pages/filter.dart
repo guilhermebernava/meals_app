@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meals_app/enums/meal_type.dart';
 import 'package:meals_app/states/meal_state.dart';
-
 import '../widgets/select_widget.dart';
 
 class Filter extends StatefulWidget {
