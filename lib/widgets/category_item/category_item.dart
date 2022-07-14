@@ -1,18 +1,18 @@
 import 'package:animated_card/animated_card.dart';
 import 'package:flutter/material.dart';
-import 'package:meals_app/states/category_state.dart';
+import 'package:meals_app/models/category.dart';
+import 'package:meals_app/states/favorites_state.dart';
 import 'package:meals_app/themes/app_styles.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meals_app/widgets/category_item/category_item_controller.dart';
 
 class CategoryItem extends StatefulWidget {
-  final String title;
-  final Color color;
-  final String id;
+  final CategoryModel model;
 
-  const CategoryItem(
-      {Key? key, required this.title, required this.color, required this.id})
-      : super(key: key);
+  const CategoryItem({
+    Key? key,
+    required this.model,
+  }) : super(key: key);
 
   @override
   State<CategoryItem> createState() => _CategoryItemState();
@@ -26,7 +26,7 @@ class _CategoryItemState extends State<CategoryItem> {
 
   @override
   void initState() {
-    isLiked = context.read<CategoryState>().isLiked(widget.id);
+    isLiked = context.read<FavoritesState>().isLikedCategory(widget.model.id);
     super.initState();
   }
 
@@ -34,7 +34,8 @@ class _CategoryItemState extends State<CategoryItem> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     return InkWell(
-      onTap: () => controller.redirect(context, widget.title, widget.id),
+      onTap: () =>
+          controller.redirect(context, widget.model.title, widget.model.id),
       borderRadius: _borderRadius,
       child: AnimatedCard(
         curve: Curves.decelerate,
@@ -47,8 +48,8 @@ class _CategoryItemState extends State<CategoryItem> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                widget.color.withOpacity(0.7),
-                widget.color,
+                widget.model.color.withOpacity(0.7),
+                widget.model.color,
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -58,16 +59,14 @@ class _CategoryItemState extends State<CategoryItem> {
           child: Stack(
             children: [
               Text(
-                widget.title,
+                widget.model.title,
                 style: AppStyles.categoryTitle,
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 40.0, left: 100),
                 child: IconButton(
                   onPressed: () {
-                    context
-                        .read<CategoryState>()
-                        .addFavoriteCategory(widget.id);
+                    context.read<FavoritesState>().likeCategory(widget.model);
                     setState(() {
                       isLiked = !isLiked;
                     });

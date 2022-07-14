@@ -9,6 +9,7 @@ import 'package:meals_app/pages/meal_detail.dart';
 import 'package:meals_app/pages/tabs_home/tabs_home.dart';
 import 'package:meals_app/services/shared_preferences.dart';
 import 'package:meals_app/states/category_state.dart';
+import 'package:meals_app/states/favorites_state.dart';
 import 'package:meals_app/states/meal_state.dart';
 import 'themes/app_colors.dart';
 
@@ -23,6 +24,9 @@ class App extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (_) => CategoryState(),
+          ),
+          BlocProvider(
+            create: (_) => FavoritesState(),
           ),
           BlocProvider(
             create: (_) => MealState(snapshot.data as MealStateModel),

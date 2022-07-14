@@ -1,12 +1,9 @@
 import 'package:animated_card/animated_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meals_app/pages/tabs_home/children/drawer/main_drawer.dart';
 import 'package:meals_app/pages/tabs_home/tabs_home_controller.dart';
 import 'package:meals_app/themes/app_colors.dart';
 import 'package:meals_app/themes/app_styles.dart';
-import '../../models/category.dart';
-import '../../states/category_state.dart';
 
 class TabsHome extends StatefulWidget {
   const TabsHome({Key? key}) : super(key: key);
@@ -37,9 +34,7 @@ class _TabsHomeState extends State<TabsHome> {
           ),
         ),
       ),
-      body: BlocBuilder<CategoryState, List<CategoryModel>>(
-        builder: (ctx, categories) => controller.pages(ctx),
-      ),
+      body: controller.pages(),
       bottomNavigationBar: BottomNavigationBar(
           elevation: 2,
           enableFeedback: true,

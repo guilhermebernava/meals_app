@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/pages/home.dart';
-import '../favoirtes.dart';
+import '../favorites/favoirtes.dart';
 
 class TabsHomeController {
-  Widget pages(BuildContext context) {
+  Widget pages() {
     switch (pageIndex) {
       case 0:
         return const Home();

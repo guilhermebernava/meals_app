@@ -15,7 +15,8 @@ enum Complexity {
   const Complexity(this.id);
 
   factory Complexity.fromId(int id) {
-    return values.firstWhere((e) => e.id == id);
+    return values.firstWhere((e) => e.id == id,
+        orElse: () => Complexity.simple);
   }
 }
 
@@ -29,6 +30,7 @@ enum Affordability {
   const Affordability(this.id);
 
   factory Affordability.fromId(int id) {
-    return values.firstWhere((e) => e.id == id);
+    return values.firstWhere((e) => e.id == id,
+        orElse: () => Affordability.pricey);
   }
 }

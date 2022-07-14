@@ -87,7 +87,15 @@ class MealState extends Cubit<MealStateModel> {
           .where((element) => element.categories.contains(categoryId))
           .toList();
 
-      return categoryList;
+      var result = <MealModel>[];
+      for (var element in categoryList) {
+        if (result.where((item) => item.id == element.id).isNotEmpty) {
+          continue;
+        }
+        result.add(element);
+      }
+
+      return result;
     }
     return [];
   }
@@ -137,7 +145,15 @@ class MealState extends Cubit<MealStateModel> {
           .where((element) => element.categories.contains(categoryId))
           .toList();
 
-      return categoryList.length;
+      var result = <MealModel>[];
+      for (var element in categoryList) {
+        if (result.where((item) => item.id == element.id).isNotEmpty) {
+          continue;
+        }
+        result.add(element);
+      }
+
+      return result.length;
     }
     return 0;
   }

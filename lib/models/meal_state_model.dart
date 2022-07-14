@@ -19,6 +19,11 @@ class MealStateModel {
 
     for (var json in list) {
       var model = MealModel.fromJson(json);
+
+      if (finalList.where((element) => element.id == model.id).isNotEmpty) {
+        continue;
+      }
+
       finalList.add(model);
     }
     return MealStateModel(

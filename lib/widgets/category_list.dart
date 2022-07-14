@@ -20,9 +20,7 @@ class CategoryList extends Padding {
                         .map(
                           (category) => CategoryItem(
                             key: ValueKey(category.id),
-                            title: category.title,
-                            color: category.color,
-                            id: category.id,
+                            model: category,
                           ),
                         )
                         .toList(),
