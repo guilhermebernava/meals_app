@@ -5,6 +5,8 @@ import 'package:meals_app/themes/app_styles.dart';
 import 'package:meals_app/widgets/icon_text.dart';
 import 'package:meals_app/widgets/meal_item/meal_item_controller.dart';
 
+import '../../enums/meal_type.dart';
+
 class MealItem extends InkWell {
   MealItem(
     BuildContext context, {
@@ -68,11 +70,11 @@ class MealItem extends InkWell {
                           icon: Icons.alarm,
                         ),
                         IconWithText(
-                          text: model.complexity.name,
+                          text: Complexity.fromId(model.complexity).name,
                           icon: Icons.work,
                         ),
                         IconWithText(
-                          text: model.affordability.name,
+                          text: Affordability.fromId(model.affordability).name,
                           icon: Icons.attach_money,
                         ),
                       ],

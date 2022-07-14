@@ -1,42 +1,38 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meals_app/enums/meal_type.dart';
 import 'package:meals_app/models/meal_state_model.dart';
-import '../data/dummy_data.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../models/meal.dart';
 
 class MealState extends Cubit<MealStateModel> {
-  MealState()
-      : super(
-          MealStateModel(
-            DummyData.dummyMeals,
-            false,
-            false,
-            false,
-            false,
-          ),
-        );
+  MealState(MealStateModel stateModel) : super(stateModel);
 
   void add(MealModel model) {
     state.meals.add(model);
     emit(state);
   }
 
-  void updateMealType(MealType mealType) {
+  void updateMealType(MealType mealType) async {
+    final instance = await SharedPreferences.getInstance();
     switch (mealType) {
       case MealType.isGlutenFree:
         state.isGlutenFree = !state.isGlutenFree;
+        instance.setString(MealStateModel.keySharedPrefences, state.toJson());
         emit(state);
         break;
       case MealType.isLactoseFree:
         state.isLactoseFree = !state.isLactoseFree;
+        instance.setString(MealStateModel.keySharedPrefences, state.toJson());
         emit(state);
         break;
       case MealType.isVegan:
         state.isVegan = !state.isVegan;
+        instance.setString(MealStateModel.keySharedPrefences, state.toJson());
         emit(state);
         break;
       case MealType.isVegetarian:
         state.isVegetarian = !state.isVegetarian;
+        instance.setString(MealStateModel.keySharedPrefences, state.toJson());
         emit(state);
         break;
     }
