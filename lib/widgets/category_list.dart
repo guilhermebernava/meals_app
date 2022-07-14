@@ -4,8 +4,11 @@ import 'category_item/category_item.dart';
 import 'category_widget.dart';
 
 class CategoryList extends Padding {
-  CategoryList(Size size, {Key? key, required List<CategoryModel> categories})
-      : super(
+  CategoryList(
+    Size size, {
+    Key? key,
+    required List<CategoryModel> categories,
+  }) : super(
           key: key,
           padding:
               const EdgeInsets.only(top: 10.0, left: 10, right: 10, bottom: 0),

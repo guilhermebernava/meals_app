@@ -24,9 +24,8 @@ class FavoritesState extends Cubit<FavoriteModelState> {
       state.categories.add(model);
     } else {
       model.isLiked = false;
-      state.categories.remove(model);
+      state.categories.removeWhere((_) => _.id == model.id);
     }
-
     emit(state);
   }
 
